@@ -4,8 +4,11 @@ import tkinter as tk
 from tkinter import simpledialog
 
 # load cascade classifier training file for haarcascade
-cascPath = "haarcascade_frontalface_default.xml"
-faceCascade = cv2.CascadeClassifier(cascPath)
+frontCascPath = "face_data/haarcascade_frontalface_default.xml"
+frontFaceCascade = cv2.CascadeClassifier(frontCascPath)
+
+profilCascPath = "face_data/haarcascade_profileface.xml"
+profilFaceCascade = cv2.CascadeClassifier(profilCascPath)
 
 # initialize camera
 cam = cv2.VideoCapture(0)
@@ -22,7 +25,14 @@ while(True):
     # convert to grayscale
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # detect faces
-    faces = faceCascade.detectMultiScale(
+    frontFaces = frontFaceCascade.detectMultiScale(
+        gray,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(30, 30),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+    profileFaces = profilFaceCascade.detectMultiScale(
         gray,
         scaleFactor=1.1,
         minNeighbors=5,
@@ -30,7 +40,9 @@ while(True):
         flags=cv2.CASCADE_SCALE_IMAGE
     )
     # draw rectangle around faces
-    for (x, y, w, h) in faces:
+    for (x, y, w, h) in frontFaces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+    for (x, y, w, h) in profileFaces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
     # display frame
     cv2.imshow("cam_feed", frame)
