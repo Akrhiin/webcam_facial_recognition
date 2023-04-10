@@ -13,7 +13,7 @@ profilFaceCascade = cv2.CascadeClassifier(profilCascPath)
 cam = cv2.VideoCapture(0)
 
 # create window
-cv2.namedWindow("cam_feed")
+cv2.namedWindow("[ESC] to close, [SPACE] to save image")
 
 while(True):
     # read frame
