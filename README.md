@@ -6,8 +6,8 @@ Basic project to apply facial recognition to live webcam video using opencv vide
 ## Project Structure
 ```
 $PROJECT_ROOT
-│   # Face data
-├── haarcascade_frontalface_default.xml
+│   # Face data xml files
+├── face_data
 │   # This file
 ├── README.md
 │   # Python script
