@@ -5,9 +5,8 @@ from tkinter import simpledialog
 
 # load cascade classifier training file for haarcascade
 frontCascPath = "face_data/haarcascade_frontalface_default.xml"
-frontFaceCascade = cv2.CascadeClassifier(frontCascPath)
-
 profilCascPath = "face_data/haarcascade_profileface.xml"
+frontFaceCascade = cv2.CascadeClassifier(frontCascPath)
 profilFaceCascade = cv2.CascadeClassifier(profilCascPath)
 
 # initialize camera
@@ -40,10 +39,12 @@ while(True):
         flags=cv2.CASCADE_SCALE_IMAGE
     )
     # draw rectangle around faces
-    for (x, y, w, h) in frontFaces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-    for (x, y, w, h) in profileFaces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+    if len(frontFaces) > 0:
+        for (x, y, w, h) in frontFaces:
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+    elif len(profileFaces) > 0:
+        for (x, y, w, h) in profileFaces:
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
     # display frame
     cv2.imshow("cam_feed", frame)
     k = cv2.waitKey(1)      # on key press
