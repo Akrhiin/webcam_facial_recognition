@@ -1,4 +1,4 @@
-# Haarcascade Face Recognition
+# Haar Cascade Face Recognition
 
 ## Description:
 Basic project to apply facial recognition to live webcam video using opencv video capture and Haar cascades.
