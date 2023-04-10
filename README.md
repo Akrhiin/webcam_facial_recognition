@@ -9,6 +9,6 @@ $PROJECT_ROOT
 │   # Face data xml files
 ├── face_data
 │   # This file
-├── README.md
+├─> README.md
 │   # Python script
-└── webcam_scan_face.py
+└─> webcam_scan_face.py
