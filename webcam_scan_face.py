@@ -1,5 +1,6 @@
 # imports
 import cv2  
+import subprocess
 import tkinter as tk
 from tkinter import simpledialog
 
@@ -18,7 +19,8 @@ profile_casc_path = "face_data/haarcascade_profileface.xml"
 profile_face_cascade = cv2.CascadeClassifier(profile_casc_path)
 
 # initialize camera
-cam = cv2.VideoCapture(0)
+# *find camera device number*
+cam = cv2.VideoCapture(0)   # *set 0 to camera device number*
 
 # create window
 #cv2.namedWindow("[ESC] to close, [SPACE] to save image")
