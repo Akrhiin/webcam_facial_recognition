@@ -1,3 +1,26 @@
+# file: webcam_scan_face.py
+# author: Michael Pace
+# created: 
+# updated: 06.08.2023
+
+
+# check os
+from sys import platform
+this_os = platform
+
+# linux
+def linux():
+    pass
+
+# mac
+def mac():
+    pass
+
+# windows
+def windows():
+    pass
+
+# ==================================================================
 # imports
 import cv2  
 import subprocess
@@ -20,7 +43,15 @@ profile_face_cascade = cv2.CascadeClassifier(profile_casc_path)
 
 # initialize camera
 # *find camera device number*
-cam = cv2.VideoCapture(0)   # *set 0 to camera device number*
+if this_os == "linux":
+    try:
+        cam = cv2.VideoCapture(0)   # *set 0 to camera device number*
+    except:
+        cam = cv2.VideoCapture(1)   # *set 1 to camera device number*
+if this_os == "darwin":
+    pass
+if this_os == "win32":
+    cam = cv2.VideoCapture(0)   # *set 0 to camera device number*
 
 # create window
 #cv2.namedWindow("[ESC] to close, [SPACE] to save image")
