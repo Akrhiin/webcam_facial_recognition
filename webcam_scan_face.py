@@ -10,15 +10,15 @@ this_os = platform
 
 # linux
 def linux():
-    pass
+    this_os = "linux"
 
 # mac
 def mac():
-    pass
+    this_os = "darwin"
 
 # windows
 def windows():
-    pass
+    this_os = "win32"
 
 # ==================================================================
 # imports
